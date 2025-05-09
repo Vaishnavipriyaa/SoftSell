@@ -1,0 +1,255 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+html {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+html.dark {
+  background-color: #000000; 
+  color: rgb(247, 244, 244); 
+}
+
+header {
+  box-sizing: border-box;
+  height: 13vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* Push content to the left */
+  align-items: flex-start;     /* Align items to the top */
+  padding: 20px;
+  position: absolute;          /* Stick to top */
+  top: 0;
+  left: 0;
+  z-index: 10;                 /* Make sure it's above other content */
+}
+header img {
+  width: 80px;   /* Adjust as needed */
+  height: auto;
+}
+
+
+/* Main section styling */
+section {
+  padding-top: 40vh;
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Layout max-width */
+.max-w-6xl {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px; /* Avoid tight edges */
+}
+
+/* Grid system for section content */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Set to 3 columns by default */
+  gap: 30px;
+  text-align: center;
+  justify-items: center;
+}
+
+/* Grid column adjustment for smaller screens */
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+}
+
+/* Styling for individual cards */
+.card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Button styling */
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #050505;
+  color: white;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+/* Input and form styling */
+input,
+textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  transition: border 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #050505;
+}
+
+/* Floating effect for text elements */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Add cursor follow effect */
+body {
+  cursor: pointer;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20px;
+  left: -20px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Testimonials container */
+.testimonials-container {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  justify-content: center;
+}
+
+/* Testimonial card */
+.testimonial-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-width: 280px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Button in testimonials */
+button {
+  background: rgba(59, 58, 58, 0.6);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:disabled {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  background: rgba(73, 72, 72, 0.3);
+  transform: scale(1.04);
+}
+
+/* Shiny Dots Effect */
+.dots-container {
+  position: absolute;
+  pointer-events: none;
+}
+
+.shiny-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.8;
+  animation: shine 1s infinite ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+}
+
+/* Dark Mode Specific Styles */
+html.dark .card {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+html.dark button {
+  background-color: #333235; /* Darker button background */
+  color: black;
+}
+
+html.dark .header,
+html.dark .footer {
+  background-color: #1c1c1c; /* Dark header and footer */
+}
+
+html.dark a {
+  color: #bb86fc; /* Light blue link color in dark mode */
+}
+
+html a {
+  color: #6200ea; /* Default purple link color in light mode */
+}
